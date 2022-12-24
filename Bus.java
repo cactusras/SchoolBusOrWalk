@@ -14,15 +14,31 @@ public class Transportation extends Bus {
     }
     
     public boolean operate (Time time){
+        boolean op = false;
+        if (time.getHour()<18 && time.getHour()>8){
+            boolean = true;
+        }//判斷是否在營運時間內
         
+        return op;
     }
     
     public boolean stop (Station station){
+        boolean st = false;
+        for (Station st:stop){
+            if (st = station){
+                st = true;
+            }
+        }//判斷公車是否停靠此站
         
+        return st;
     }
     
-    public Time waitNextBus (Time now){
+    public time waitNextBus (Time now){
+        Time wait;
         
+        
+        
+        return wait;
     }
     
     
