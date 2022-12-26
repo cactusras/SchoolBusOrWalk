@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Transportation extends Bus {
+public class Bus extends Transportation {
     String name = " ";
     Route route = new Route (ArrayList <Station> stop, Time startOperation, Time finishOperation, Time gap);
     
