@@ -1,86 +1,41 @@
-// import java.util.ArrayList;
+import java.util.ArrayList;
 
-// public class Route {
-//   ArrayList <Station> stop = new ArrayList <Station>();
-//   ArrayList <Time> timeTable0 = new ArrayList <Time>();
-//   Bus bus = new Bus//建立一個Bus物件才能判斷路線
+public class Route {
+    private ArrayList <Station> stop = new ArrayList <Station>();
+    private ArrayList <Time> timeTable0 = new ArrayList <Time>();
+    private Time start;
+    private Time finish;
+    private Time gap;
+    public Route (ArrayList <Station> stop, Time startOperation, Time finishOperation, Time gap){
+        this.gap = gap;
+        this.start = startOperation;
+        this.finish = finishOperation;
+        this.stop = stop;
+        Time add = startOperation;
+        int comeTimes = startOperation.subtract(finishOperation).howManyMinute()/gap.howManyMinute();
+        for(int i=0; i<comeTimes; i++){
+            timeTable0.add(add);
+            add.add1(gap);
+        }
+    }
   
-//   public Route (ArrayList <Station> stop, Time startOperation, Time finishOperation, Time gap){
-    
-//   }
-  
-//   public Time getStationATimeTable (){
-//     Time A;
-//     int timeA = 480;
-//     if (bus.getName().equals("first")){
-//       while (timeA <= 1080){
-//         timeA += 20;
-//         A = A.howManyMinute(timeA);
-//       }
-//     }
-    
-//     if (bus.getName().equals("second")){
-//       while (timeA <= 1080){
-//         timeA += 30;
-//         A = A.howManyMinute(timeA);
-//       }
-//     }
-    
-//     return A;
-//   }
-  
-//   public Time getStationBTimeTable (){
-//     Time B;
-//     int timeB = 485;
-//     while (timeB <= 1085){
-//       timeB += 20;
-//       B = B.howManyMinute(timeB);
-//     }
-    
-//     return B;
-//   }
-  
-//   public Time getStationCTimeTable (){
-//     Time C;
-//     int timeC = 490;
-//     if (bus.getName().equals("first")){
-//       while (timeC <= 1090){
-//         timeC +=20;
-//         C = C.howManyMinute(timeC);
-//       }
-//     }
-    
-//     if (bus.getName().equals("second")){
-//       while (timeC <= 1090){
-//         timeC += 30;
-//         C = C.howManyMinute(timeC);
-//       }
-//     }
-    
-//     return C;
-//   }
-  
-//   public Time getStationDTimeTable (){
-//     Time D;
-//     int timeD = 495;
-//     while (timeD <= 1095){
-//       timeD += 20;
-//       D = D.hoeManyMinute(timeD);
-//     }
-    
-//     return D;
-//   }
-  
-//   public Time getStationETimeTable (){
-//     Time E;
-//     int timeE = 500;
-//     while (timeE <= 1100){
-//       timeE += 30;
-//       E = E.howManyMinute(timeE);
-//     }
-    
-//     return E;
-//   }
-  
-  
-// }
+    public ArrayList<Time> getStationTimeTable (Station station){
+        int adjust = 5;
+        ArrayList<Time> request = new ArrayList<Time>();
+        if (station.getStation().equals("A station")) { 
+            adjust*=1;
+        }else if (station.getStation().equals("B station")){
+            adjust*=2;
+        }else if (station.getStation().equals("C station")){
+            adjust*=3;
+        }else if (station.getStation().equals("D station")){
+            adjust*=4;
+        }else if (station.getStation().equals("E station")){
+            adjust*=5;
+        }
+        for(Time t:timeTable0){
+            request.add(t.add(new Time(adjust)));
+        }
+        return request;
+    }
+}

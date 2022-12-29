@@ -5,10 +5,10 @@ public class Station {
 		this.station = station;
 		this.position = position;
 	}
-	public String getstation() {
+	public String getStation() {
 		return station;
 	}
-	public int getposition() {
+	public int getPosition() {
 		return position;
 	}
 }

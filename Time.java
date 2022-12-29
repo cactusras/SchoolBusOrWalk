@@ -32,9 +32,20 @@ public class Time {
         Time added = new Time(min/60, min%60);
         return added;
     }
+    public void add1(Time later) {// 01:00+00:30=01:30
+        int min = howManyMinute()+later.howManyMinute();
+        setHour(min/60);
+        setMinute(min%60);
+    }
     public Time subtract(Time before) {// 01:00-00:30=00:30 算差(恆正)
         int min = Math.abs(howManyMinute()-before.howManyMinute());
         Time subtracted = new Time(min/60, min%60);
         return subtracted;
     }
+    public void subtract1(Time later) {// 01:00+00:30=01:30
+        int min = howManyMinute()-later.howManyMinute();
+        setHour(min/60);
+        setMinute(min%60);
+    }
+
 }
