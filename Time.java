@@ -26,14 +26,15 @@ public class Time {
         min=getHour()*60+getMinute();
         return min;
     }
-    public void add(Time later) {// 01:00+00:30=01:30
+    //not sure is it ok to create a new obj in the method
+    public Time add(Time later) {// 01:00+00:30=01:30
         int min = howManyMinute()+later.howManyMinute();
-        setHour(min/60);
-        setMinute(min%60);
+        Time added = new Time(min/60, min%60);
+        return added;
     }
-    public void subtract(Time before) {// 01:00-00:30=00:30 算差(恆正)
+    public Time subtract(Time before) {// 01:00-00:30=00:30 算差(恆正)
         int min = Math.abs(howManyMinute()-before.howManyMinute());
-        setHour(min/60);
-        setMinute(min%60);
+        Time subtracted = new Time(min/60, min%60);
+        return subtracted;
     }
 }

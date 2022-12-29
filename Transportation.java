@@ -1,6 +1,6 @@
 public class Transportation {
 	String name="";
-	int speed=0;
+	int speed=0;//單位m/min
 	public Transportation (String name, int speed) {
 		this.name = name;
         this.speed = speed;
