@@ -1,14 +1,11 @@
 import java.util.ArrayList;
 public class Bus extends Transportation {
     private String name = "";
-	private Route route;
     private ArrayList <Station> stop;
     private Time startOperation;
     private Time finishOperation;
     private Time gap;
-    public String getName(){
-        return name;
-    }
+    Route route = new Route (stop, startOperation, finishOperation, gap);
     public Bus (String name, int speed, ArrayList <Station> stop, Time startOperation, Time finishOperation, Time gap){
     	super(speed);
         this.name = name;
@@ -17,7 +14,9 @@ public class Bus extends Transportation {
     	this.finishOperation = finishOperation;
     	this.gap = gap;
     }    
-    
+    public String getName (){
+        return name;
+    }
   //判斷是否在營運時間內
     public boolean operate (Time time){
         boolean op = false;
@@ -36,7 +35,7 @@ public class Bus extends Transportation {
         return st;
     }
     public Time travelTime (Time now, Station start, Station end){
-    	Time travel = super.travelTime(start,end,getSpeed());//from transportation function:traveltime
+    	Time travel = super.travelTime(start,end);//from transportation function:traveltime
 		Time wait = new Time(0);
 		ArrayList<Time> timeTableStart = route.getStationTimeTable(start);
 		for (int i=0; i<timeTableStart.size(); i++){
@@ -50,4 +49,3 @@ public class Bus extends Transportation {
         return wait;
     }
 }
-
