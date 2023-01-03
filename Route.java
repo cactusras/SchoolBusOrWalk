@@ -1,16 +1,8 @@
 import java.util.ArrayList;
 
 public class Route {
-    private ArrayList <Station> stop = new ArrayList <Station>();
     private ArrayList <Time> timeTable0 = new ArrayList <Time>();
-    private Time start;
-    private Time finish;
-    private Time gap;
     public Route (ArrayList <Station> stop, Time startOperation, Time finishOperation, Time gap){
-        this.gap = gap;
-        this.start = startOperation;
-        this.finish = finishOperation;
-        this.stop = stop;
         Time add = startOperation;
         int comeTimes = startOperation.subtract(finishOperation).howManyMinute()/gap.howManyMinute();
         for(int i=0; i<comeTimes; i++){
