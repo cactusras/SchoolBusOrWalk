@@ -38,7 +38,6 @@ public class FinalProject {
 				System.out.printf("This station does not exist.");
 			}
 		}
-	Time walkTime = walker.travelTime(start,end);
 		for(Station e : stations){
 			if(ends.equals(e.getStation())){
 				end = e;
